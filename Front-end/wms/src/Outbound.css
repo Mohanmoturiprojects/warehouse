@@ -1,0 +1,195 @@
+/* Container */
+.outbound-container {
+  padding: 20px;
+  background-color: #f6f8fa;
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header */
+.outbound-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.outbound-header h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Add Button */
+.add-btn {
+  background-color: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 0px;
+}
+
+.add-btn:hover {
+  background-color: #1e4fd6;
+}
+
+/* Table */
+.shipment-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.shipment-table thead {
+  background-color: #e5e7eb;
+}
+
+.shipment-table th,
+.shipment-table td {
+  padding: 12px 10px;
+  font-size: 14px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.shipment-table th {
+  font-weight: 600;
+  color: #374151;
+}
+
+.shipment-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+/* ASN clickable link */
+.asn-link {
+  color: #2563eb;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.asn-link:hover {
+  text-decoration: underline;
+}
+
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal box */
+.modal {
+  background: #ffffff;
+  padding: 20px 24px;
+  width: 420px;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: scaleIn 0.2s ease;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Modal title */
+.modal h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 18px;
+  color: #111827;
+}
+
+/* Product list */
+.modal ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+}
+
+.modal ul li {
+  padding: 8px 0;
+  font-size: 14px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.modal ul li:last-child {
+  border-bottom: none;
+}
+
+/* File input */
+.modal input[type="file"] {
+  width: 100%;
+  margin: 12px 0;
+  font-size: 14px;
+}
+
+/* Modal actions */
+.upload-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Buttons */
+.submit-btn,
+.close-btn,
+.cancel-btn {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Submit */
+.submit-btn {
+  background-color: #16a34a;
+  color: #fff;
+}
+
+.submit-btn:hover {
+  background-color: #15803d;
+}
+
+/* Close / Cancel */
+.close-btn,
+.cancel-btn {
+  background-color: #ef4444;
+  color: #fff;
+}
+
+.close-btn:hover,
+.cancel-btn:hover {
+  background-color: #dc2626;
+}
+
+/* Disabled button */
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
