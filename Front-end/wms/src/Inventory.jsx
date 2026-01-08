@@ -12,7 +12,7 @@ const Inventory = () => {
     max_qty: "",
   });
 
-  /* ================= FETCH INVENTORY ================= */
+  /* FETCH INVENTORY */
   const fetchInventory = async () => {
     try {
       const res = await fetch("http://localhost:5989/inventory/fetch");
@@ -27,7 +27,7 @@ const Inventory = () => {
     fetchInventory();
   }, []);
 
-  /* ================= ADD LOCATION ================= */
+  /*  ADD LOCATION  */
   const submitLocation = async () => {
     if (!form.location || !form.max_qty) {
       toast.error("All fields are required");
@@ -59,7 +59,7 @@ const Inventory = () => {
     <div className="inventory-container">
       <ToastContainer position="bottom-right" autoClose={3000} />
 
-      {/* ================= HEADER ================= */}
+      {/*  HEADER  */}
       <div className="inventory-header">
         <h2>Inventory</h2>
         <button className="add-btn" onClick={() => setShowModal(true)}>
@@ -67,7 +67,7 @@ const Inventory = () => {
         </button>
       </div>
 
-      {/* ================= TABLE ================= */}
+      {/*  TABLE */}
       <table className="inventory-table">
         <thead>
           <tr>

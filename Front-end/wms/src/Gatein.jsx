@@ -29,7 +29,7 @@ const Gatein = () => {
     supplier: "",
   });
 
-  /* ================= NEW STATE FOR OUTBOUND ================= */
+  /*  NEW STATE FOR OUTBOUND  */
   const [tripDetails, setTripDetails] = useState({
     start_location: "",
     destination: "",
@@ -43,7 +43,7 @@ const Gatein = () => {
   const [startLocations, setStartLocations] = useState([]);
   const [allLocations, setAllLocations] = useState([]);
 
-  /* ================= LOAD RECEIVED VEHICLES ================= */
+  /*  LOAD RECEIVED VEHICLES */
   useEffect(() => {
     const stored = JSON.parse(
       localStorage.getItem("receivedVehicles") || "[]"
@@ -51,7 +51,7 @@ const Gatein = () => {
     setReceivedVehicles(stored);
   }, []);
 
-  /* ================= FETCH GATE ================= */
+  /*  FETCH GATE*/
   const fetchGateData = async () => {
     const res = await fetch("http://localhost:5989/gate/get");
     const result = await res.json();
@@ -62,7 +62,7 @@ const Gatein = () => {
     fetchGateData();
   }, []);
 
-  /* ================= ADD GATE ================= */
+  /*  ADD GATE */
   const submitGateIn = async () => {
     if (!gateForm.vehicle_no || !gateForm.dname || !gateForm.supplier) {
       toast.error("All fields are required");
@@ -87,7 +87,7 @@ const Gatein = () => {
     }
   };
 
-  /* ================= FETCH ASN LIST ================= */
+  /* FETCH ASN LIST  */
   const fetchASNList = async () => {
     try {
       const res = await fetch("http://localhost:5989/shipment/asn-list");
@@ -98,7 +98,7 @@ const Gatein = () => {
     }
   };
 
-  /* ================= FETCH LOCATIONS (INBOUND) ================= */
+  /*  FETCH LOCATIONS (INBOUND)  */
   const fetchLocations = async () => {
     try {
       const res = await fetch("http://localhost:5989/inventory/available");
@@ -109,7 +109,7 @@ const Gatein = () => {
     }
   };
 
-  /* ================= LOAD ASN PRODUCTS (INBOUND) ================= */
+  /* LOAD ASN PRODUCTS (INBOUND)*/
   const loadASNProducts = async (asn) => {
     try {
       const res = await fetch(
@@ -130,7 +130,7 @@ const Gatein = () => {
     }
   };
 
-  /* ================= SUBMIT GATE RECEIVE (INBOUND) ================= */
+  /*SUBMIT GATE RECEIVE (INBOUND)  */
   const submitGateReceive = async () => {
     if (loading) return;
 
@@ -187,7 +187,7 @@ const Gatein = () => {
     }
   };
 
-  /* ================= OUTBOUND HELPERS ================= */
+  /* OUTBOUND HELPERS  */
 
   const isInboundASN = (asn) => asn?.startsWith("ASN-");
 const isOutboundASN = (asn) => asn?.startsWith("OUT-");
@@ -256,7 +256,7 @@ const fetchLocationsForProduct = async (productName) => {
 
       setOutProducts(formatted);
 
-      // prefetch locations for each product name (optional)
+      // prefetch locations for each product name 
       formatted.forEach((p) => {
         fetchLocationsForProduct(p.product_name);
       });
@@ -466,37 +466,52 @@ const fetchLocationsForProduct = async (productName) => {
       </table>
 
       
-      {showSidebar && (
+     {showSidebar && (
         <div className="sidebar">
-          <h3>{isOutboundASN(selectedASN) ? "Outbound Trip" : "Gate Receive"}</h3>
+           {/* Header */}
+          <div className="sidebar-header">
+      <h3>
+        {isOutboundASN(selectedASN) ? "Outbound Trip" : "Gate Receive"}
+      </h3>
 
-          <label>Vehicle No</label>
-          <input value={selectedGate?.vehicle_no || ""} disabled />
+      {/* Close button */}
+      <span
+        className="sidebar-close"
+        onClick={() => setShowSidebar(false)}
+        title="Close"
+      >
+        ✖
+      </span>
+    </div>
 
-          <label>ASN No</label>
-          <select
-            value={selectedASN}
-            onChange={(e) => {
-              const value = e.target.value;
-              setSelectedASN(value);
+    <label>Vehicle No</label>
+    <input value={selectedGate?.vehicle_no || ""} disabled />
 
-              if (isInboundASN(value)) {
-                loadASNProducts(value);
-                fetchLocations();
-                setOutProducts([]);
-                setProductLocations({});
-              } else if (isOutboundASN(value)) {
-                setProducts([]);
-                fetchStartLocations();
-                fetchLocationsForProduct();
-                loadOutboundProducts(value);
-              } else {
-                setProducts([]);
-                setOutProducts([]);
-                setProductLocations({});
-              }
-            }}
-          >
+    <label>ASN No</label>
+    <select
+      value={selectedASN}
+      onChange={(e) => {
+        const value = e.target.value;
+        setSelectedASN(value);
+
+        if (isInboundASN(value)) {
+          loadASNProducts(value);
+          fetchLocations();
+          setOutProducts([]);
+          setProductLocations({});
+        } else if (isOutboundASN(value)) {
+          setProducts([]);
+          fetchStartLocations();
+          loadOutboundProducts(value);
+        } else {
+          setProducts([]);
+          setOutProducts([]);
+          setProductLocations({});
+        }
+      }}
+    >
+     
+
             <option value="">Select ASN</option>
             {asnList.map((row) => (
               <option key={row.asn_no} value={row.asn_no}>
@@ -656,7 +671,7 @@ const fetchLocationsForProduct = async (productName) => {
                 </div>
               </div>
 
-              {/* Products block */}
+              {/* PRODUCTS BLOCK */}
               <div className="card-section">
                 <div className="card-header">
                   <span className="card-step">2</span>

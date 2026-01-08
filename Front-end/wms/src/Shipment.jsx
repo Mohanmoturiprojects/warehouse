@@ -20,7 +20,7 @@ const Shipment = () => {
     fetchShipments();
   }, []);
 
-  // ✅ CORRECT UPLOAD (FILE ONLY)
+  // ✅ CORRECT UPLOAD 
   const handleUpload = async () => {
     if (!file) {
       alert("Please select an Excel file");
@@ -113,7 +113,7 @@ const Shipment = () => {
                 </li>
               );
             }
-            return <li key={index}>{p.trim()}</li>; // fallback
+            return <li key={index}>{p.trim()}</li>; 
           })}
       </ul>
 
