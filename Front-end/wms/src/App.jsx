@@ -38,7 +38,6 @@ function AppContent({ isLoggedIn, setIsLoggedIn }) {
 
   return (
     <div className="app-container">
-      {/* HEADER */}
       <header className="header">
         <div className="header-top">
           <h1 className="logo">Logikal WMS</h1>
@@ -88,7 +87,6 @@ function AppContent({ isLoggedIn, setIsLoggedIn }) {
       {/* ROUTES */}
       <div className="content">
         <Routes>
-          {/* Default route */}
           <Route
             path="/"
             element={

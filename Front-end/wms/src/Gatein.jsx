@@ -17,10 +17,8 @@ const Gatein = () => {
 
   const [showGateForm, setShowGateForm] = useState(false);
 
-  // locations per product name for outbound
   const [productLocations, setProductLocations] = useState({});
 
-  /* ✅ LocalStorage based received vehicles */
   const [receivedVehicles, setReceivedVehicles] = useState([]);
 
   const [gateForm, setGateForm] = useState({
@@ -65,7 +63,7 @@ const Gatein = () => {
   /*  ADD GATE */
   const submitGateIn = async () => {
     if (!gateForm.vehicle_no || !gateForm.dname || !gateForm.supplier) {
-      toast.error("All fields are required");
+      toast.error("All fields are requried");
       return;
     }
 
